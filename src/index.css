@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Fredoka One', cursive;
+  --font-body: 'Nunito', sans-serif;
+  --color-space: #0a0a1a;
+  --color-space-mid: #0f0f2e;
+  --color-space-card: #161640;
+  --color-star-yellow: #FFD700;
+  --color-nebula-purple: #7B2FBE;
+  --color-nebula-pink: #FF6B9D;
+  --color-nebula-teal: #00D4AA;
+}
+
+* {
+  font-family: 'Nunito', sans-serif;
+}
+
+h1, h2, h3, .display {
+  font-family: 'Fredoka One', cursive;
+}
+
+body {
+  background-color: #0a0a1a;
+  color: white;
+  margin: 0;
+}
+
+/* Starfield background */
+.starfield {
+  background-color: #0a0a1a;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, white 0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 50%, rgba(255,255,255,0.8) 0%, transparent 100%),
+    radial-gradient(1px 1px at 50% 10%, white 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 30%, white 0%, transparent 100%),
+    radial-gradient(1px 1px at 15% 70%, rgba(255,255,255,0.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 45% 90%, white 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 60%, rgba(255,255,255,0.8) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 35%, white 0%, transparent 100%),
+    radial-gradient(2px 2px at 25% 15%, rgba(255,255,200,0.9) 0%, transparent 100%),
+    radial-gradient(2px 2px at 75% 45%, rgba(200,200,255,0.9) 0%, transparent 100%),
+    radial-gradient(2px 2px at 55% 75%, rgba(255,200,200,0.8) 0%, transparent 100%),
+    radial-gradient(1px 1px at 85% 15%, white 0%, transparent 100%),
+    radial-gradient(1px 1px at 5% 85%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 40% 60%, white 0%, transparent 100%),
+    radial-gradient(1px 1px at 92% 70%, rgba(255,255,255,0.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 20% 40%, white 0%, transparent 100%),
+    radial-gradient(1px 1px at 65% 20%, rgba(255,255,255,0.6) 0%, transparent 100%);
+}
+
+/* Planet orbit animation */
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px currentColor; }
+  50%       { box-shadow: 0 0 40px currentColor, 0 0 60px currentColor; }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-twinkle { animation: twinkle 2s ease-in-out infinite; }
+.animate-slide-in { animation: slideIn 0.5s ease-out forwards; }
+.animate-spin-slow { animation: spin 20s linear infinite; }
+
+/* Glass card */
+.glass-card {
+  background: rgba(22, 22, 64, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Planet hover glow */
+.planet-card:hover .planet-emoji {
+  animation: pulse-glow 1s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a1a; }
+::-webkit-scrollbar-thumb { background: #7B2FBE; border-radius: 3px; }
+
+/* Quiz option hover */
+.quiz-option {
+  transition: all 0.2s ease;
+}
+.quiz-option:hover {
+  transform: translateX(6px);
+  border-color: rgba(123, 47, 190, 0.8);
+}
+.quiz-option.correct { border-color: #00D4AA; background: rgba(0, 212, 170, 0.15); }
+.quiz-option.wrong   { border-color: #FF6B6B; background: rgba(255, 107, 107, 0.15); }
+
+/* Fun facts ticker */
+.fact-badge {
+  background: linear-gradient(135deg, rgba(123,47,190,0.3), rgba(255,107,157,0.3));
+  border: 1px solid rgba(255,107,157,0.3);
+}
